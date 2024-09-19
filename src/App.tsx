@@ -13,14 +13,13 @@ import {
 import { GoogleOAuthProvider } from "@react-oauth/google";
 
 import { onError } from "@apollo/client/link/error";
-import GetUsers from "./components/GetUsers";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import LoginScreen from "./features/Login";
+import router from "./routes/Routes";
+import { RouterProvider } from "react-router-dom";
 
 const errorLink = onError(({ graphQLErrors, networkError }) => {
   if (graphQLErrors) {
     graphQLErrors.map(({ message, locations, path }) =>
-      alert(`Graphql error ${message}`)
+      alert(`Graphql error ${message}- ${locations} -${path}`)
     );
   } else if (networkError) {
     console.log(networkError);
@@ -38,12 +37,12 @@ const client = new ApolloClient({
 });
 
 function App() {
-  const router = createBrowserRouter([
-    {
-      path: "/login",
-      element: <LoginScreen />,
-    },
-  ]);
+  // const router = createBrowserRouter([
+  //   {
+  //     path: "/login",
+  //     element: <LoginScreen />,
+  //   },
+  // ]);
 
   return (
     <GoogleOAuthProvider clientId="1081298410716-qg0kr4q81btqklhmua9qu05lmnt47d5d.apps.googleusercontent.com">

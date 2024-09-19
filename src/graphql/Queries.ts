@@ -11,3 +11,24 @@ export const LOAD_USER = gql`
     }
   }
 `;
+
+export const LOAD_FORM = gql`
+  query {
+    getAllForms {
+      id
+      event
+      firstName
+      lastName
+      email
+      password
+      username
+      phoneNumber
+      gender
+      intrest
+      address
+      city
+      noOfTickets
+      eventDate
+    }
+  }
+`;
